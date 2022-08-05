@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -24,7 +24,7 @@ public class Main {
     // The HashMap will store the completed draft
     static ArrayList<String> players = new ArrayList<String>();
     static ArrayList<String> teams = new ArrayList<String>();
-    static HashMap<Integer, String> draft = new HashMap<Integer, String>();
+    static LinkedHashMap<String, String> draft = new LinkedHashMap<String, String>();
 
     // Function to load teams and players from the files to the ArrayList
     static void loadFromFile(Scanner file, ArrayList<String> a_list) {
@@ -59,15 +59,33 @@ public class Main {
         return a_List;
     }
 
+    // Function to show draft results
+    static void showDraftResults() {
+        int pick_number = 1;
+        for (String s : draft.keySet()) {
+            System.out.println(pick_number + ": " + s + " -> " + draft.get(s));
+            pick_number++;
+            delay(2000);
+        }
+    }
+
     // NBA Draft Function
     static void startDraft() {
         System.out.print("---------------\nStarting NBA Draft\n---------------\n");
-        delay(5000);
+        delay(4000);
         ArrayList<String> shuffled_teams = shuffleTeamsPlayers(teams);
         ArrayList<String> shuffled_players = shuffleTeamsPlayers(players);
         System.out.print("---------------\nDraft Lottery\n---------------");
         showPlayersTeams(shuffled_teams);
         delay(3000);
+        // Populate the 'draft' HashMap with shuffled_teams and shuffled_players
+        for (int i = 0; i < shuffled_teams.size(); i++) {
+            draft.put(shuffled_teams.get(i), shuffled_players.get(i));
+        }
+        // Draft is now complete
+        // Show Draft Results
+        showDraftResults();
+        System.out.println("---------------\nNBA Draft Completed\n---------------\n");
     }
 
     public static void main(String[] args) {
