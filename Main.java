@@ -31,11 +31,12 @@ public class Main {
 
     // Function to display Teams/Players - Options 2 & 3
     static void showPlayersTeams(ArrayList<String> a_list) {
-        System.out.println("\n\n----------\n----------\n\n");
+        System.out.println("\n--------------------\n");
         for (int i = 0; i < a_list.size(); i++) {
             System.out.println(i+1 + ": " + a_list.get(i));
+            delay(250);
         }
-        System.out.println("\n\n----------\n----------\n\n");
+        System.out.println("\n--------------------\n");
     }
 
     // Delay function
