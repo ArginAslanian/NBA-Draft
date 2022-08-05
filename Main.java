@@ -29,6 +29,15 @@ public class Main {
         }
     }
 
+    // Function to display Teams/Players - Options 2 & 3
+    static void showPlayersTeams(ArrayList<String> a_list) {
+        System.out.println("\n\n----------\n----------\n\n");
+        for (int i = 0; i < a_list.size(); i++) {
+            System.out.println(i+1 + ": " + a_list.get(i));
+        }
+        System.out.println("\n\n----------\n----------\n\n");
+    }
+
     public static void main(String[] args) {
         // Initial Message
         System.out.println("--- WELCOME TO THE NBA DRAFT! ---");
@@ -75,10 +84,10 @@ public class Main {
                         System.out.println("Start NBA Draft");
                         break;
                     case 2:
-                        System.out.println("View Available Players");
+                        showPlayersTeams(players);
                         break;
                     case 3:
-                        System.out.println("View Teams");
+                        showPlayersTeams(teams);
                         break;
                     case 4:
                         System.out.println("View Results");
