@@ -38,6 +38,21 @@ public class Main {
         System.out.println("\n\n----------\n----------\n\n");
     }
 
+    // Delay function
+    static void delay(int m) {
+        try {
+            Thread.sleep(m);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    // NBA Draft Function
+    static void startDraft() {
+        System.out.print("---------------\nStarting NBA Draft\n---------------\n");
+        delay(5000);
+    }
+
     public static void main(String[] args) {
         // Initial Message
         System.out.println("--- WELCOME TO THE NBA DRAFT! ---");
@@ -81,7 +96,7 @@ public class Main {
 
                 switch (u_selection) {
                     case 1:
-                        System.out.println("Start NBA Draft");
+                        startDraft();
                         break;
                     case 2:
                         showPlayersTeams(players);
