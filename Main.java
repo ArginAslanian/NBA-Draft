@@ -14,13 +14,17 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 
     // The ArrayLists will store the teams and players
+    // The HashMap will store the completed draft
     static ArrayList<String> players = new ArrayList<String>();
     static ArrayList<String> teams = new ArrayList<String>();
+    static HashMap<Integer, String> draft = new HashMap<Integer, String>();
 
     // Function to load teams and players from the files to the ArrayList
     static void loadFromFile(Scanner file, ArrayList<String> a_list) {
@@ -35,6 +39,7 @@ public class Main {
         for (int i = 0; i < a_list.size(); i++) {
             System.out.println(i+1 + ": " + a_list.get(i));
             delay(250);
+           
         }
         System.out.println("\n--------------------\n");
     }
@@ -48,10 +53,21 @@ public class Main {
         }
     }
 
+    // Randomize Players and Teams order
+    static ArrayList<String> shuffleTeamsPlayers(ArrayList<String> a_List) {
+        Collections.shuffle(a_List);
+        return a_List;
+    }
+
     // NBA Draft Function
     static void startDraft() {
         System.out.print("---------------\nStarting NBA Draft\n---------------\n");
         delay(5000);
+        ArrayList<String> shuffled_teams = shuffleTeamsPlayers(teams);
+        ArrayList<String> shuffled_players = shuffleTeamsPlayers(players);
+        System.out.print("---------------\nDraft Lottery\n---------------");
+        showPlayersTeams(shuffled_teams);
+        delay(3000);
     }
 
     public static void main(String[] args) {
