@@ -60,12 +60,12 @@ public class Main {
     }
 
     // Function to show draft results
-    static void showDraftResults() {
+    static void showDraftResults(int n) {
         int pick_number = 1;
         for (String s : draft.keySet()) {
             System.out.println(pick_number + ": " + s + " -> " + draft.get(s));
             pick_number++;
-            delay(2000);
+            delay(n);
         }
     }
 
@@ -84,7 +84,7 @@ public class Main {
         }
         // Draft is now complete
         // Show Draft Results
-        showDraftResults();
+        showDraftResults(2000);
         System.out.println("---------------\nNBA Draft Completed\n---------------\n");
     }
 
@@ -140,7 +140,8 @@ public class Main {
                         showPlayersTeams(teams);
                         break;
                     case 4:
-                        System.out.println("View Results");
+                        showDraftResults(250);
+                        System.out.println("\n-------------------\n");
                         break;
                     case 5:
                         System.out.println("Thank you. NBA Draft Application Ended.");
