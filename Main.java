@@ -105,19 +105,21 @@ public class Main {
             // Menu Selections
             int u_selection = 0;
             Scanner u_input = new Scanner(System.in);
+            boolean invalid_selection = true;
+            boolean draft_exists = false;
             
             // MAIN MENU
             do {
 
                 System.out.println("1: Start NBA Draft");
-                System.out.println("2: View Available Players");
+                System.out.println("2: View Players");
                 System.out.println("3: View Teams");
                 System.out.println("4: View Results");
                 System.out.println("5: Exit");
 
                 // Get user input
                 // Validate to make sure its a number between 1-5
-                System.out.print("Select From Menu Above: ");
+                System.out.print("\nSelect From Menu Above: ");
                 do {
                     while (!u_input.hasNextInt()) {
                         System.out.print("Invalid Input: Please Try Again: ");
@@ -126,12 +128,22 @@ public class Main {
                     u_selection = u_input.nextInt();
                     if (u_selection < 1 || u_selection > 5) {
                         System.out.print("Invalid Input: Please Try Again: ");
+                        invalid_selection = true;
+                    } else if (u_selection == 1 && draft_exists) {
+                        System.out.print("Draft Already Completed: Please Try Again or Press 4 to View Results: ");
+                        invalid_selection = true;
+                    } else if (u_selection == 4 && !draft_exists) {
+                        System.out.print("Draft has Not Been Completed: Please Try Again or Press 1 to Start NBA Draft: ");
+                        invalid_selection = true;
+                    } else {
+                        invalid_selection = false;
                     }
-                } while (u_selection < 1 || u_selection > 5);
+                } while (invalid_selection);
 
                 switch (u_selection) {
                     case 1:
                         startDraft();
+                        draft_exists = true;
                         break;
                     case 2:
                         showPlayersTeams(players);
@@ -140,6 +152,7 @@ public class Main {
                         showPlayersTeams(teams);
                         break;
                     case 4:
+                        System.out.print("---------------\nNBA Draft Results\n---------------\n");
                         showDraftResults(250);
                         System.out.println("\n-------------------\n");
                         break;
