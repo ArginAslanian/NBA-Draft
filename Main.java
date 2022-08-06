@@ -5,8 +5,8 @@
  * Each team selecting an available player in their turn.
  * Menu:
  * 1: NBA Draft -> Conduct the draft - Can only be done once in the program
- * 2: View Available Players -> Display Available Players
- * 3: View Teams -> Display teams with their draft lottery number
+ * 2: View Players -> Display Available Players
+ * 3: View Teams -> Display Teams
  * 4: View Results -> Show the results - Can only be shown after NBA Draft has been conducted
  * 5: Exit
  */
@@ -90,7 +90,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Initial Message
-        System.out.println("--- WELCOME TO THE NBA DRAFT! ---");
+        System.out.println("\n--- WELCOME TO THE NBA DRAFT! ---\n");
 
         try {
             // Scanners to read players.txt and teams.txt
@@ -166,6 +166,10 @@ public class Main {
 
             } while (u_selection != 5);
 
+            // Close the scanner
+            u_input.close();
+            sc_players.close();
+            sc_teams.close();
 
         } catch (FileNotFoundException e) {
             // Message to quit program if File Not Found
